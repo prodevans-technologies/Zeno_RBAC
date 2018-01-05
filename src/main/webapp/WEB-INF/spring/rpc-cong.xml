@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="unifyHandler" class="java.lang.String">
+		<constructor-arg type="java.lang.String" value="unify"></constructor-arg>
+	</bean>
+
+	<bean id="server-url" class="java.net.URL">
+		<constructor-arg type="java.lang.String"
+			value="http://52.172.205.76/unifyv3/xmlRPC.do"></constructor-arg>
+	</bean>
+
+	<bean id="ClientConf" class="org.apache.xmlrpc.client.XmlRpcClientConfigImpl">
+		<property name="serverURL" ref="server-url"></property>
+		<property name="basicUserName" value="oneeight"></property>
+		<property name="basicPassword" value="!oneight@#"></property>
+	</bean>
+
+	<bean id="rpcClient" class="org.apache.xmlrpc.client.XmlRpcClient">
+		<property name="config" ref="ClientConf"></property>
+	</bean>
+
+
+	<bean id="DashboardImpl" class="com.prodevans.zeno.dao.impl.DashboardDAOImpl">
+		<property name="unifyHandler" ref="unifyHandler"></property>
+		<property name="rpcClient" ref="rpcClient"></property>
+	</bean>
+	
+	<!-- Added by siddu -->
+	<bean id="rcImpl" class="com.prodevans.zeno.dao.impl.rcDAOImpl">
+		<property name="unifyHandler" ref="unifyHandler"></property>
+		<property name="rpcClient" ref="rpcClient"></property>
+	</bean>
+	
+
+	<!-- Added by vipin -->
+	<bean id="PaymentImpl" class="com.prodevans.zeno.dao.impl.PaymentDAOImpl">
+		<property name="unifyHandler" ref="unifyHandler"></property>
+		<property name="rpcClient" ref="rpcClient"></property>
+	</bean>
+	<!-- Added by vipin -->
+	<bean id="PaymentResponseDAOImpl" class="com.prodevans.zeno.dao.impl.PaymentResponseDAOImpl">
+		<property name="unifyHandler" ref="unifyHandler"></property>
+		<property name="rpcClient" ref="rpcClient"></property>
+	</bean>
+	<!-- Added by vipin -->
+	<bean id="InvoiceDAOImpl" class="com.prodevans.zeno.dao.impl.InvoiceDAOImpl">
+		<property name="unifyHandler" ref="unifyHandler"></property>
+		<property name="rpcClient" ref="rpcClient"></property>
+	</bean>
+	<!-- Added by vipin -->
+	<bean id="PayBillDAOImpl" class="com.prodevans.zeno.dao.impl.PayBillDAOImpl">
+		<property name="unifyHandler" ref="unifyHandler"></property>
+		<property name="rpcClient" ref="rpcClient"></property>
+	</bean>
+	<!-- Added by vipin -->
+	<bean id="SendMailDAOImpl" class="com.prodevans.zeno.dao.impl.SendMailDAOImpl">
+		<property name="unifyHandler" ref="unifyHandler"></property>
+		<property name="rpcClient" ref="rpcClient"></property>
+	</bean>
+	
+	
+	<bean id="FeedbackDAOImpl" class="com.prodevans.zeno.dao.impl.FeedbackDAOImpl">
+		<property name="unifyHandler" ref="unifyHandler"></property>
+		<property name="rpcClient" ref="rpcClient"></property>
+	</bean>
+
+
+	<bean id="LoginImpl" class="com.prodevans.zeno.dao.impl.UserInfoDAOImpl">
+		<property name="unifyHandler" ref="unifyHandler"></property>
+		<property name="rpcClient" ref="rpcClient"></property>
+	</bean>
+	<bean id="profileImpl" class="com.prodevans.zeno.dao.impl.ProfileDAOImpl">
+		<property name="unifyHandler" ref="unifyHandler"></property>
+		<property name="rpcClient" ref="rpcClient"></property>
+	</bean>
+	
+</beans>
+
